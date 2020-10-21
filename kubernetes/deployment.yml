@@ -16,6 +16,21 @@ spec:
     spec:
       containers:
         - name: house
+         env:                                                 ##### 컨테이너에서 사용할 환경 변수 설정
+            - name: CONTRY
+              valueFrom:
+                configMapKeyRef:
+                  name: house-region
+                  key: contury
+            - name: REGION
+              valueFrom:
+                configMapKeyRef:
+                  name: house-region
+                  key: region
+          volumeMounts:                                                 ##### CM볼륨을 바인딩
+          - name: config
+            mountPath: "/config"
+            readOnly: true
           image: username/house:latest
           ports:
             - containerPort: 8080
