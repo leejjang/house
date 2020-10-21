@@ -21,7 +21,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: house-region
-                  key: contury
+                  key: country
             - name: REGION
               valueFrom:
                 configMapKeyRef:
